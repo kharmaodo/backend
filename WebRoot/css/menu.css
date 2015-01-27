@@ -1,0 +1,35 @@
+#menu ul {
+  	float:right;
+  	list-style:none;
+  	margin:0px 0px 0px 0px;
+}
+
+#menu ul li {
+  	float:left;
+  	margin:0px 10px 0px 0px;
+}
+
+.menudeco{
+	width:1px;
+	height:14px;
+	background:#8080FF;
+}
+
+#menu {
+  	padding: 10px 0px 0px 0px;
+  	width: 1000px;
+  	height: 20px;
+  	text-align: center;
+  	margin: 0px 0px 0px 0px;
+}
+
+#menu ul li a{
+  	color:#FFFFFF;
+  	text-decoration:none;
+}
+
+#menu ul li a:hover{
+  	color:#FF6600;
+  	text-decoration:none;
+}
+

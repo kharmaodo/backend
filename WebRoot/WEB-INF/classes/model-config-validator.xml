@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING/DTD BEAN/EN" "http://www.springframework.org/dtd/spring-beans.dtd"> 
+<beans>
+	<bean id="registerValidator" class="com.atosorigin.mice.km.validator.RegisterValidator">
+		<property name="docMembersService">
+			<ref bean="docMembersService"/>
+		</property>
+	</bean>
+	
+	<bean id="forgotValidator" class="com.atosorigin.mice.km.validator.ForgotValidator">
+		<property name="docMembersService">
+			<ref bean="docMembersService"/>
+		</property>
+	</bean>
+	
+	<bean id="loginValidator" class="com.atosorigin.mice.km.validator.LoginValidator">
+		<property name="docMembersService">
+			<ref bean="docMembersService"/>
+		</property>
+	</bean>
+	
+	<bean id="changePasswordValidator" class="com.atosorigin.mice.km.validator.ChangePasswordValidator">
+		<property name="docMembersService">
+			<ref bean="docMembersService"/>
+		</property>
+	</bean>
+	
+	<bean id="memberEditValidator" class="com.atosorigin.mice.km.validator.MemberEditValidator">
+		<property name="docMembersService">
+			<ref bean="docMembersService"/>
+		</property>
+	</bean>
+	
+	<bean id="memberListValidator" class="com.atosorigin.mice.km.validator.MemberListValidator" />
+	
+	<bean id="memberAdminValidator" class="com.atosorigin.mice.km.validator.MemberAdminValidator" />
+	
+	<bean id="documentCategoryEditValidator" class="com.atosorigin.mice.km.validator.DocumentCategoryEditValidator" />
+	
+	<bean id="documentCategoryListValidator" class="com.atosorigin.mice.km.validator.DocumentCategoryListValidator" />
+	
+	<bean id="documentEditValidator" class="com.atosorigin.mice.km.validator.DocumentEditValidator" />
+	
+	<bean id="documentListValidator" class="com.atosorigin.mice.km.validator.DocumentListValidator" />
+	
+	<bean id="vendorValidator" class="com.atosorigin.mice.km.validator.VendorValidator">
+		<property name="docMembersService">
+			<ref bean="docMembersService"/>
+		</property>
+	</bean>
+	
+	<bean id="vendorUpdateValidator" class="com.atosorigin.mice.km.validator.VendorUpdateValidator"/>
+	
+	<bean id="backendNewsEditValidator" class="com.atosorigin.mice.km.validator.BackendNewsEditValidator"/>
+	
+	<bean id="videoEditValidator" class="com.atosorigin.mice.km.validator.VideoEditValidator"/>
+	
+	<bean id="caseStudyEditValidator" class="com.atosorigin.mice.km.validator.CaseStudyEditValidator"/>
+	
+	<bean id="pressReleaseEditValidator" class="com.atosorigin.mice.km.validator.PressReleaseEditValidator"/>
+	
+	<bean id="clippingEditValidator" class="com.atosorigin.mice.km.validator.ClippingEditValidator"/>
+	
+	<bean id="eventEditValidator" class="com.atosorigin.mice.km.validator.EventEditValidator"/>
+	
+	<bean id="industryNewsEditValidator" class="com.atosorigin.mice.km.validator.IndustryNewsEditValidator"/>
+	
+	<bean id="projectEditValidator" class="com.atosorigin.mice.km.validator.ProjectEditValidator"/>
+	
+	<bean id="announcementEditValidator" class="com.atosorigin.mice.km.validator.AnnouncementEditValidator"/>
+	
+
+</beans>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING/DTD BEAN/EN" "http://www.springframework.org/dtd/spring-beans.dtd"> 
+<beans default-autowire="no" default-lazy-init="false" default-dependency-check="none">
+	<!--  Mail Setting -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+  		<property name="host" value="${mail_smtp_host}"/>
+	</bean>
+	
+	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+  		<property name="from" value="${mail_from}"/>
+	</bean>
+	
+	<!-- DWR -->
+	<bean id="dwrUtil" class="com.atosorigin.mice.km.util.DwrUtil">
+		<property name="docMembersDAO">
+			<ref bean="docMembersDAO"/>
+		</property>
+		<property name="documentCategoryDAO">
+			<ref bean="documentCategoryDAO"/>
+		</property>
+		<property name="messageSource">
+			<ref bean="messageSource"/>
+		</property>
+	</bean>
+	
+	<!-- SendMail -->
+	<bean id="sendMailUtil" class="com.atosorigin.mice.km.util.SendMailUtil">
+		<property name="mailSender">
+			<ref bean="mailSender"/>
+		</property>
+		<property name="templateMessage">
+			<ref bean="templateMessage"/>
+		</property>
+		<property name="from" value="${mail_from}"/>
+	</bean>
+	
+	<!-- Excel View -->
+	<bean id="ciExcelView" class="com.atosorigin.mice.km.view.CiExcelView"/>
+	<bean id="mappExcelView" class="com.atosorigin.mice.km.view.MappExcelView"/>
+	
+
+</beans>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>backend.root</param-value>
+	</context-param>
+	
+	<session-config>
+		<session-timeout>
+			30
+		</session-timeout>
+	</session-config>
+	
+	<servlet>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/classes/dataSource-jdbc.xml, /WEB-INF/classes/model-config-dao.xml, /WEB-INF/classes/model-config-service.xml, /WEB-INF/classes/model-config-util.xml, /WEB-INF/classes/web-config.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/dataSource-jdbc.xml, /WEB-INF/classes/model-config-dao.xml, /WEB-INF/classes/model-config-service.xml, /WEB-INF/classes/model-config-util.xml, /WEB-INF/classes/model-config-validator.xml, /WEB-INF/classes/web-config.xml</param-value>
+	</context-param>
+	
+	
+	<!-- DWR -->
+	<servlet>    
+    	<servlet-name>dwr-invoker</servlet-name>    
+		<servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>    
+    	<init-param>    
+          <param-name>debug</param-name>    
+          <param-value>true</param-value>    
+      	</init-param>    
+	</servlet>    
+	<servlet-mapping>    
+     	<servlet-name>dwr-invoker</servlet-name>    
+     	<url-pattern>/dwr/*</url-pattern>    
+	</servlet-mapping>   
+	 
+	 
+	<!-- filter in tomcat default -->
+  	<filter>
+     	<filter-name>Set Character Encoding</filter-name>
+     	<filter-class>com.atosorigin.mice.km.filters.SetCharacterEncodingFilter</filter-class>
+     	<init-param>
+       	 <param-name>encoding</param-name>
+       	 <param-value>UTF-8</param-value>
+     	</init-param>
+  	</filter>
+  	<filter-mapping>
+   	  <filter-name>Set Character Encoding</filter-name>
+   	  <url-pattern>/*</url-pattern>
+  	</filter-mapping>
+
+  	<filter>
+		<filter-name>accessControlFilter</filter-name>
+		<filter-class>com.atosorigin.mice.km.filters.AccessControlFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/logout.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/member.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/category.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/doc.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/conference.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/card.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/home.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/vendor.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/ciapp.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/doc.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/news.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/log.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/video.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/case.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/mapp.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/excel.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/clip.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/pr.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/project.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/event.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/eventApp.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/industryNewsApp.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/industryNews.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/venue.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/att.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/ann.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/epaper.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/oversea.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessControlFilter</filter-name>
+		<url-pattern>/prop.htm</url-pattern>
+	</filter-mapping>
+
+	<filter>
+     	<filter-name>navigatorFilter</filter-name>
+     	<filter-class>com.atosorigin.mice.km.filters.NavigatorlFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+   	  <filter-name>navigatorFilter</filter-name>
+   	  <url-pattern>/*</url-pattern>
+  	</filter-mapping>
+	
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- Log4j setting -->
+  <context-param>
+      <param-name>log4jConfigLocation</param-name>
+      <param-value>/WEB-INF/classes/log4j.properties</param-value>
+  </context-param>
+  <context-param>
+      <param-name>log4jRefreshInterval</param-name>
+      <param-value>1000</param-value>
+  </context-param>
+  <listener>
+      <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  </listener>
+  
+  <!-- error page -->
+   <error-page>
+	<error-code>404</error-code>
+	<location>/WEB-INF/jsp/error/404.jsp</location>
+   </error-page>
+ 
+   <error-page>
+	<exception-type>java.lang.Exception</exception-type>
+	<location>/WEB-INF/jsp/error/404.jsp</location>
+   </error-page>
+</web-app>

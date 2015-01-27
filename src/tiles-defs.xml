@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions> 
+    <definition name=".afterLogin" template="/WEB-INF/jsp/tiles/afterLogin.jsp"> 
+      <put-attribute name="title"  type="string"   value="Sample Page Title"/> 
+      <put-attribute name="header" type="template" value="/WEB-INF/jsp/tiles/header.jsp"/> 
+      <put-attribute name="menu"   type="template" value="/WEB-INF/jsp/tiles/menu.jsp"/> 
+      <put-attribute name="footer" type="template" value="/WEB-INF/jsp/tiles/footer.jsp"/> 
+      <put-attribute name="body"   type="template" value="/WEB-INF/jsp/tiles/body.jsp"/> 
+    </definition> 
+    
+    <definition name=".afterLoginPreview" template="/WEB-INF/jsp/tiles/afterLoginPreview.jsp"> 
+      <put-attribute name="body"   type="template" value="/WEB-INF/jsp/tiles/body.jsp"/> 
+    </definition> 
+    
+    <definition name=".beforeLogin" template="/WEB-INF/jsp/tiles/beforeLogin.jsp"> 
+      <put-attribute name="title"  type="string"   value="Sample Page Title"/> 
+      <put-attribute name="header" type="template" value="/WEB-INF/jsp/tiles/header.jsp"/>
+      <put-attribute name="footer" type="template" value="/WEB-INF/jsp/tiles/footer.jsp"/> 
+      <put-attribute name="body"   type="template" value="/WEB-INF/jsp/tiles/body.jsp"/> 
+    </definition> 
+
+    <definition name="register" extends=".beforeLogin">
+      <put-attribute name="title" type="string"   value="會員註冊"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/register/register.jsp"/> 
+    </definition>
+    
+    <definition name="registerSuccess" extends=".beforeLogin">
+      <put-attribute name="title" type="string"   value="會員註冊成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/register/success.jsp"/> 
+    </definition>
+    
+    <definition name="forgot" extends=".beforeLogin">
+      <put-attribute name="title" type="string"   value="忘記密碼"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/forgot/forgot.jsp"/> 
+    </definition>
+    
+    <definition name="forgotSuccess" extends=".beforeLogin">
+      <put-attribute name="title" type="string"   value="忘記密碼成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/forgot/success.jsp"/> 
+    </definition>
+    
+    <definition name="activeSuccess" extends=".beforeLogin">
+      <put-attribute name="title" type="string"   value="帳號啟動成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/active/success.jsp"/> 
+    </definition>
+    
+    <definition name="activeFail" extends=".beforeLogin">
+      <put-attribute name="title" type="string"   value="帳號啟動失敗"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/active/fail.jsp"/> 
+    </definition>
+    
+    <definition name="login" extends=".beforeLogin">
+      <put-attribute name="title" type="string"   value="會員登入"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/login/login.jsp"/> 
+    </definition>
+    
+    <definition name="loginSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="待辦事項"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/login/success.jsp"/> 
+    </definition>
+    
+    <definition name="changePasswordForm" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="變更密碼"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/member/changePassword.jsp"/> 
+    </definition>
+    
+    <definition name="changePasswordSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="變更密碼成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/member/changePasswordSuccess.jsp"/> 
+    </definition>
+    
+    <definition name="memberEditForm" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="更新個人資料"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/member/edit.jsp"/> 
+    </definition>
+    
+    <definition name="memberEditSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="更新個人資料成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/member/editSuccess.jsp"/> 
+    </definition>
+    
+    <definition name="memberListForm" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="會員查詢"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/member/list.jsp"/> 
+    </definition>
+    
+    <definition name="memberListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="會員查詢結果"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/member/listResult.jsp"/> 
+    </definition>
+    
+    <definition name="memberListFormMT" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="會展網會員查詢"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/member/listMT.jsp"/> 
+    </definition>
+    
+    <definition name="memberListResultMT" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="會展網會員查詢結果"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/member/listResultMT.jsp"/> 
+    </definition>
+    
+    <definition name="memberAdminFormMT" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="會員查詢"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/member/adminMT.jsp"/> 
+    </definition>
+    
+    <definition name="memberAdminForm" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="會員查詢"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/member/admin.jsp"/> 
+    </definition>
+    
+    <definition name="memberInsertForm" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增會員"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/member/insert.jsp"/> 
+    </definition>
+    
+    <definition name="memberInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增會員成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/member/insertSuccess.jsp"/> 
+    </definition>
+    
+    <definition name="documentCategoryInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增 Document Category"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/category/insert.jsp"/> 
+    </definition>
+    
+    <definition name="documentCategoryInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增 Document Category 成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/category/insertSuccess.jsp"/> 
+    </definition>
+    
+    <definition name="documentCategoryList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢 Document Category"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/category/list.jsp"/> 
+    </definition>
+    
+    <definition name="documentCategoryListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢 Document Category 結果"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/category/listResult.jsp"/> 
+    </definition>
+    
+    <definition name="documentCategoryUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="修改 Document Category"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/category/update.jsp"/> 
+    </definition>
+    
+    <definition name="documentInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增 Document"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/document/insert.jsp"/> 
+    </definition>
+    
+    <definition name="documentInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增 Document 成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/document/insertSuccess.jsp"/> 
+    </definition>
+    
+    <definition name="documentListByOwnerId" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢 Document By Owner"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/document/listByOwnerId.jsp"/> 
+    </definition>
+    
+     <definition name="documentListByOwnerIdResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢 Document By Owner 結果"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/document/listByOwnerIdResult.jsp"/> 
+    </definition>
+    
+    <definition name="documentUpdateByOwnerId" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="更新Document By Owner"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/document/updateByOwnerId.jsp"/> 
+    </definition>
+    
+    <definition name="documentListByVerified" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢 Document By Verified"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/document/listByVerified.jsp"/> 
+    </definition>
+    
+    <definition name="documentListByVerifiedResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢 Document By Verified 結果"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/document/listByVerifiedResult.jsp"/> 
+    </definition>
+    
+    <definition name="documentUpdateByVerified" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="更新Document By Verified"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/document/updateByVerified.jsp"/> 
+    </definition>
+    
+    <definition name="documentListByBOFT" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢 Document By BOFT"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/document/listByBOFT.jsp"/> 
+    </definition>
+    
+    <definition name="documentListByBOFTResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢 Document By BOFT 結果"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/document/listByBOFTResult.jsp"/> 
+    </definition>
+    
+    <definition name="documentUpdateByBOFT" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="更新Document By BOFT"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/document/updateByBOFT.jsp"/> 
+    </definition>
+    
+    <definition name="conferenceInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增會議"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/conference/insert.jsp"/> 
+    </definition>
+    
+    <definition name="conferenceInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增會議成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/conference/insertSuccess.jsp"/> 
+    </definition>
+    
+    <definition name="conferenceList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢會議"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/conference/list.jsp"/> 
+    </definition>
+    
+    <definition name="conferenceListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢會議結果"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/conference/listResult.jsp"/> 
+    </definition>
+    
+    <definition name="conferenceUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="修改會議"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/conference/update.jsp"/> 
+    </definition>
+    
+    <definition name="home" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="首頁"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/home/home.jsp"/> 
+    </definition>
+    
+    
+    <definition name="vendorInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增主辦單位"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/vendor/insert.jsp"/> 
+    </definition>
+    
+    <definition name="vendorInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增主辦單位成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/vendor/insertSuccess.jsp"/> 
+    </definition>
+    
+    <definition name="vendorList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢主辦單位"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/vendor/list.jsp"/> 
+    </definition>
+    
+    <definition name="vendorListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢主辦單位"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/vendor/listResult.jsp"/> 
+    </definition>
+    
+    <definition name="vendorUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="修改主辦單位"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/vendor/update.jsp"/> 
+    </definition>
+    
+    <!-- CI 申請 -->
+    <definition name="ciappListForm" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="CI申請"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/ciapp/list.jsp"/> 
+    </definition>
+    
+    <definition name="ciappListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="CI申請"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/ciapp/listResult.jsp"/> 
+    </definition>
+    
+    <definition name="ciappDetail" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="CI明細"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/ciapp/detail.jsp"/> 
+    </definition>
+    
+    
+    <definition name="ciappListImgForm" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="IMG申請"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/ciapp/listImg.jsp"/> 
+    </definition>
+    
+    <definition name="ciappListImgResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="IMG申請"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/ciapp/listResultImg.jsp"/> 
+    </definition>
+    
+    <definition name="ciappReport" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="CI申請報告"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/ciapp/report.jsp"/> 
+    </definition>
+    
+    <definition name="ciappReportResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="CI申請報告"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/ciapp/reportResult.jsp"/> 
+    </definition>
+    
+    <!-- 系統公告 -->
+    <definition name="newsInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增公告"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/news/insert.jsp"/> 
+    </definition>
+    
+    <definition name="newsInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增公告成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/news/insertSuccess.jsp"/> 
+    </definition>
+    
+    <definition name="newsList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢公告"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/news/list.jsp"/> 
+    </definition>
+    
+    <definition name="newsListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢公告"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/news/listResult.jsp"/> 
+    </definition>
+    
+    <definition name="newsUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="修改公告"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/news/update.jsp"/> 
+    </definition>
+    
+    <definition name="newsListResultForHome" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢公告"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/news/listResultForHome.jsp"/> 
+    </definition>
+    
+    <!-- log -->
+    <definition name="logList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢LOG"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/log/list.jsp"/> 
+    </definition>
+    
+    <definition name="logListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢LOG"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/log/listResult.jsp"/> 
+    </definition>
+    
+    <!-- video -->
+    <definition name="videoList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢VIDEO"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/video/list.jsp"/> 
+    </definition>
+    
+    <definition name="videoListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢VIDEO"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/video/listResult.jsp"/> 
+    </definition>
+    
+    <definition name="videoInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增VIDEO"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/video/insert.jsp"/> 
+    </definition>
+    
+    <definition name="videoInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增VIDEO成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/video/insertSuccess.jsp"/> 
+    </definition>
+    
+    <definition name="videoUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="修改VIDEO"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/video/update.jsp"/> 
+    </definition>
+    
+    <!-- Case study -->
+    <definition name="caseList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢CASE STUDY"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/casestudy/list.jsp"/> 
+    </definition>
+    
+    <definition name="caseListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢CASE STUDY"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/casestudy/listResult.jsp"/> 
+    </definition>
+    
+    <definition name="caseInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增CASE STUDY"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/casestudy/insert.jsp"/> 
+    </definition>
+    
+    <definition name="caseInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增CASE STUDY成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/casestudy/insertSuccess.jsp"/> 
+    </definition>
+    
+    <definition name="caseUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="修改CASE STUDY"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/casestudy/update.jsp"/> 
+    </definition>
+    
+    <!-- Mapp申請審核 -->
+    <definition name="mappListForm" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢MAPP"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/mapp/list.jsp"/> 
+    </definition>
+    
+    <definition name="mappListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢MAPP"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/mapp/listResult.jsp"/> 
+    </definition>
+    
+    <definition name="mappDetail" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢MAPP明細"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/mapp/detail.jsp"/> 
+    </definition>
+    
+ 	<!-- 國外會展要聞  clipping -->
+    <definition name="clipList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢Clipping"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/clip/list.jsp"/> 
+    </definition>
+    
+    <definition name="clipListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢Clipping"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/clip/listResult.jsp"/> 
+    </definition>
+    
+    <definition name="clipInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增Clipping"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/clip/insert.jsp"/> 
+    </definition>
+    
+    <definition name="clipInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增Clipping成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/clip/insertSuccess.jsp"/> 
+    </definition>
+    
+    <definition name="clipUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="修改Clipping"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/clip/update.jsp"/> 
+    </definition>
+    
+    <!-- 新聞中心 Press release -->
+    <definition name="pressReleaseInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="Press Release"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/pressrelease/insert.jsp"/> 
+    </definition>
+    
+    <definition name="pressReleaseInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="Press Release成功"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/pressrelease/insertSuccess.jsp"/> 
+    </definition>
+
+	<definition name="pressReleaseList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="Press Release"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/pressrelease/list.jsp"/> 
+    </definition>
+    
+    <definition name="pressReleaseListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="Press Release"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/pressrelease/listResult.jsp"/> 
+    </definition> 
+    
+    <definition name="pressReleaseUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="Press Release"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/pressrelease/update.jsp"/> 
+    </definition> 
+    
+    
+    <!-- 訊息公告 Announcement -->
+    <definition name="announcementInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="announcement"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/announcement/insert.jsp"/> 
+    </definition>
+    
+    <definition name="announcementInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="announcement"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/announcement/insertSuccess.jsp"/> 
+    </definition>
+
+	<definition name="announcementList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="announcement"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/announcement/list.jsp"/> 
+    </definition>
+    
+    <definition name="announcementListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="announcement"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/announcement/listResult.jsp"/> 
+    </definition> 
+    
+    <definition name="announcementUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="announcement"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/announcement/update.jsp"/> 
+    </definition> 
+    
+    
+    <!-- 子計畫 Project -->
+     <definition name="projectInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增Project"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/project/insert.jsp"/> 
+    </definition>
+    
+    <definition name="projectInsertSuccess" extends=".afterLoginPreview">
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/project/preview.jsp"/> 
+    </definition>
+    
+    <definition name="projectDirtySuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="新增Project"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/project/insertSuccess.jsp"/> 
+    </definition>
+    
+    <definition name="projectList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢Project"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/project/list.jsp"/> 
+    </definition>
+    
+    <definition name="projectListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="查詢Project"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/project/listResult.jsp"/> 
+    </definition>
+    
+    <definition name="projectUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="修改Project"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/project/update.jsp"/> 
+    </definition>
+    
+    
+    <!-- 審核會展快訊 -->
+    <definition name="eventListAppResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="審核會展快訊"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/event/listAppResult.jsp"/> 
+    </definition>
+    
+    <definition name="eventUpdateAppResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="審核會展快訊"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/event/updateApp.jsp"/> 
+    </definition>
+    
+    <definition name="eventInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="會展快訊"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/event/insert.jsp"/> 
+    </definition>
+    
+    <definition name="eventInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="會展快訊"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/event/insertSuccess.jsp"/> 
+    </definition>
+    
+    <definition name="eventList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="會展快訊"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/event/list.jsp"/> 
+    </definition>
+    
+    <definition name="eventListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="會展快訊"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/event/listResult.jsp"/> 
+    </definition>
+    
+    <definition name="eventUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="會展快訊"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/event/update.jsp"/> 
+    </definition>
+    
+    <!-- 審核國內會展要聞 -->
+    <definition name="industryNewsListAppResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="審核國內會展要聞"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/industryNews/listAppResult.jsp"/> 
+    </definition>
+    <definition name="industryNewsUpdateAppResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="審核國內會展要聞"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/industryNews/updateApp.jsp"/> 
+    </definition>
+    <definition name="industryNewsInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="國內會展要聞"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/industryNews/insert.jsp"/> 
+    </definition>
+    <definition name="industryNewsInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="國內會展要聞"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/industryNews/insertSuccess.jsp"/> 
+    </definition>
+    <definition name="industryNewsList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="國內會展要聞"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/industryNews/list.jsp"/> 
+    </definition>
+    <definition name="industryNewsListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="國內會展要聞"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/industryNews/listResult.jsp"/> 
+    </definition>
+    <definition name="industryNewsUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="國內會展要聞"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/industryNews/update.jsp"/> 
+    </definition>
+    
+    <!-- 廠商名錄 -->
+      <definition name="venueInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="廠商名錄"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/venue/insert.jsp"/> 
+    </definition>
+    <definition name="venueInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="廠商名錄"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/venue/insertSuccess.jsp"/> 
+    </definition>
+    <definition name="venueList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="廠商名錄"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/venue/list.jsp"/> 
+    </definition>
+    <definition name="venueListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="廠商名錄"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/venue/listResult.jsp"/> 
+    </definition>
+    <definition name="venueUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="廠商名錄"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/venue/update.jsp"/> 
+    </definition>
+    
+    
+    
+    <!-- 電子報 -->
+      <definition name="epaperInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="電子報"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/epaper/insert.jsp"/> 
+    </definition>
+    <definition name="epaperInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="電子報v"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/epaper/insertSuccess.jsp"/> 
+    </definition>
+    <definition name="epaperList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="電子報"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/epaper/list.jsp"/> 
+    </definition>
+    <definition name="epaperListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="電子報"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/epaper/listResult.jsp"/> 
+    </definition>
+    <definition name="epaperUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="電子報"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/epaper/update.jsp"/> 
+    </definition>
+    
+    
+     <!-- 海外專業展 -->
+      <definition name="overseaInsert" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="海外專業展"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/oversea/insert.jsp"/> 
+    </definition>
+    <definition name="overseaInsertSuccess" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="海外專業展"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/oversea/insertSuccess.jsp"/> 
+    </definition>
+    <definition name="overseaList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="海外專業展"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/oversea/list.jsp"/> 
+    </definition>
+    <definition name="overseaListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="海外專業展"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/oversea/listResult.jsp"/> 
+    </definition>
+    <definition name="overseaUpdate" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="海外專業展"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/oversea/update.jsp"/> 
+    </definition>
+    
+     <!-- 文宣品申請 -->
+    <definition name="propList" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="文宣品申請"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/prop/list.jsp"/> 
+    </definition>
+    <definition name="propListResult" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="文宣品申請"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/prop/listResult.jsp"/> 
+    </definition>
+    <definition name="propDetail" extends=".afterLogin">
+      <put-attribute name="title" type="string"   value="文宣品申請"/>
+      <put-attribute name="body"  type="template" value="/WEB-INF/jsp/prop/detail.jsp"/> 
+    </definition>
+    
+    
+</tiles-definitions>

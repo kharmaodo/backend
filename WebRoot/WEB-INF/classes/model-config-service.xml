@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING/DTD BEAN/EN" "http://www.springframework.org/dtd/spring-beans.dtd"> 
+<beans default-autowire="no" default-lazy-init="false" default-dependency-check="none">
+
+    <bean id="docLogService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="docLogServiceImpl" />
+	</bean>
+	<bean id="docLogServiceImpl" class="com.atosorigin.mice.km.service.impl.DocLogServiceImpl">
+		<property name="docLogDAO">
+			<ref bean="docLogDAO" />
+		</property>
+	</bean>
+	
+	<bean id="docMembersService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="docMembersServiceImpl" />
+	</bean>
+	
+	<bean id="docMembersServiceImpl" class="com.atosorigin.mice.km.service.impl.DocMembersServiceImpl">
+		<property name="docMembersDAO">
+			<ref bean="docMembersDAO" />
+		</property>
+		<property name="sendMailUtil">
+			<ref bean="sendMailUtil"/>
+		</property>
+	</bean>
+	
+	<!-- test interceptor -->
+	<!-- 
+	<bean id="testInterceptor" class="com.atosorigin.mice.km.test.TestInterceptor"/>
+	<bean id="testBeforeAdvice" class="com.atosorigin.mice.km.test.TestBeforeAdvice"/>
+	<bean id="testAfterAdvice" class="com.atosorigin.mice.km.test.TestAfterAdvice"/>
+	
+	<bean id="membersService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<value>com.atosorigin.mice.km.service.MembersService</value>
+		</property>
+		<property name="target">
+      		<ref bean="membersServiceImpl"/>
+   		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>testInterceptor</value>
+				<value>testBeforeAdvice</value>
+				<value>testAfterAdvice</value>
+			</list>
+		</property>
+	</bean>
+	 -->
+	 
+	<bean id="membersService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="membersServiceImpl" />
+	</bean>
+	<bean id="membersServiceImpl" class="com.atosorigin.mice.km.service.impl.MembersServiceImpl">
+		<property name="membersDAO">
+			<ref bean="membersDAO" />
+		</property>
+	</bean>
+	
+	<bean id="documentCategoryService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="documentCategoryServiceImpl" />
+	</bean>
+	<bean id="documentCategoryServiceImpl" class="com.atosorigin.mice.km.service.impl.DocumentCategoryServiceImpl">
+		<property name="documentCategoryDAO">
+			<ref bean="documentCategoryDAO" />
+		</property>
+		<property name="localizedDataDAO">
+			<ref bean="localizedDataDAO" />
+		</property>
+		<property name="categoryLocalizedDataDAO">
+			<ref bean="categoryLocalizedDataDAO" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	
+	<bean id="localizedDataService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="localizedDataServiceImpl" />
+	</bean>
+	<bean id="localizedDataServiceImpl" class="com.atosorigin.mice.km.service.impl.LocalizedDataServiceImpl">
+		<property name="localizedDataDAO">
+			<ref bean="localizedDataDAO" />
+		</property>
+	</bean>
+	
+	<bean id="documentService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="documentServiceImpl" />
+	</bean>
+	<bean id="documentServiceImpl" class="com.atosorigin.mice.km.service.impl.DocumentServiceImpl">
+		<property name="documentDAO">
+			<ref bean="documentDAO" />
+		</property>
+		<property name="attachmentDAO">
+			<ref bean="attachmentDAO" />
+		</property>
+		<property name="attachmentExtDAO">
+			<ref bean="attachmentExtDAO" />
+		</property>
+		<property name="documentDetailDAO">
+			<ref bean="documentDetailDAO" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	<bean id="ciApplicationService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="ciApplicationServiceImpl" />
+	</bean>
+	<bean id="ciApplicationServiceImpl" class="com.atosorigin.mice.km.service.impl.CiApplicationServiceImpl">
+		<property name="ciApplicationDAO">
+			<ref bean="ciApplicationDAO" />
+		</property>
+		<property name="ciImageDAO">
+			<ref bean="ciImageDAO" />
+		</property>
+		<property name="sendMailUtil">
+			<ref bean="sendMailUtil" />
+		</property>
+	</bean>
+	
+	<bean id="backendNewsService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="backendNewsServiceImpl" />
+	</bean>
+	<bean id="backendNewsServiceImpl" class="com.atosorigin.mice.km.service.impl.BackendNewsServiceImpl">
+		<property name="backendNewsDAO">
+			<ref bean="backendNewsDAO" />
+		</property>
+	</bean>
+	
+	<bean id="groupsService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="groupsServiceImpl" />
+	</bean>
+	<bean id="groupsServiceImpl" class="com.atosorigin.mice.km.service.impl.GroupsServiceImpl">
+		<property name="groupsDAO">
+			<ref bean="groupsDAO" />
+		</property>
+	</bean>
+	
+	<bean id="vendorCategoryService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="vendorCategoryServiceImpl" />
+	</bean>
+	<bean id="vendorCategoryServiceImpl" class="com.atosorigin.mice.km.service.impl.VendorCategoryServiceImpl">
+		<property name="vendorCategoryDAO">
+			<ref bean="vendorCategoryDAO" />
+		</property>
+	</bean>
+	
+	<bean id="videoService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="videoServiceImpl" />
+	</bean>
+	<bean id="videoServiceImpl" class="com.atosorigin.mice.km.service.impl.VideoServiceImpl">
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+		<property name="videoDAO">
+			<ref bean="videoDAO" />
+		</property>
+		<property name="videoDetailDAO">
+			<ref bean="videoDetailDAO" />
+		</property>
+	</bean>
+	
+	<bean id="caseStudyCategoryService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="caseStudyCategoryServiceImpl" />
+	</bean>
+	<bean id="caseStudyCategoryServiceImpl" class="com.atosorigin.mice.km.service.impl.CaseStudyCategoryServiceImpl">
+		<property name="caseStudyCategoryDAO">
+			<ref bean="caseStudyCategoryDAO" />
+		</property>
+	</bean>
+	
+	<bean id="caseStudyService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="caseStudyServiceImpl" />
+	</bean>
+	<bean id="caseStudyServiceImpl" class="com.atosorigin.mice.km.service.impl.CaseStudyServiceImpl">
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+		<property name="caseStudyDAO">
+			<ref bean="caseStudyDAO" />
+		</property>
+		<property name="caseStudyDetailDAO">
+			<ref bean="caseStudyDetailDAO" />
+		</property>
+	</bean>
+	
+	<bean id="mappApplicationService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="mappApplicationServiceImpl" />
+	</bean>
+	<bean id="mappApplicationServiceImpl" class="com.atosorigin.mice.km.service.impl.MappApplicationServiceImpl">
+		<property name="mappApplicationDAO">
+			<ref bean="mappApplicationDAO" />
+		</property>
+		<property name="sendMailUtil">
+			<ref bean="sendMailUtil" />
+		</property>
+	</bean>
+	
+	<bean id="venueCategoryService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="venueCategoryServiceImpl" />
+	</bean>
+	<bean id="venueCategoryServiceImpl" class="com.atosorigin.mice.km.service.impl.VenueCategoryServiceImpl">
+		<property name="venueCategoryDAO">
+			<ref bean="venueCategoryDAO" />
+		</property>
+	</bean>
+	
+	
+	<bean id="venueService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="venueServiceImpl" />
+	</bean>
+	<bean id="venueServiceImpl" class="com.atosorigin.mice.km.service.impl.VenueServiceImpl">
+		<property name="venueDAO">
+			<ref bean="venueDAO" />
+		</property>
+		<property name="venueDetailDAO">
+			<ref bean="venueDetailDAO" />
+		</property>
+		<property name="venueCategoryDAO">
+			<ref bean="venueCategoryDAO" />
+		</property>
+		<property name="regionTaiwanDAO">
+			<ref bean="regionTaiwanDAO" />
+		</property>
+		<property name="localizedDataDAO">
+			<ref bean="localizedDataDAO" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	
+	<bean id="pressReleaseService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="pressReleaseServiceImpl" />
+	</bean>
+	<bean id="pressReleaseServiceImpl" class="com.atosorigin.mice.km.service.impl.PressReleaseServiceImpl">
+		<property name="pressReleaseDAO">
+			<ref bean="pressReleaseDAO" />
+		</property>
+		<property name="pressReleaseDetailDAO">
+			<ref bean="pressReleaseDetailDAO" />
+		</property>
+		<property name="attachmentDAO">
+			<ref bean="attachmentDAO" />
+		</property>
+		<property name="attachmentExtDAO">
+			<ref bean="attachmentExtDAO" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	
+	<bean id="announcementService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="announcementServiceImpl" />
+	</bean>
+	<bean id="announcementServiceImpl" class="com.atosorigin.mice.km.service.impl.AnnouncementServiceImpl">
+		<property name="announcementDAO">
+			<ref bean="announcementDAO" />
+		</property>
+		<property name="announcementDetailDAO">
+			<ref bean="announcementDetailDAO" />
+		</property>
+		<property name="attachmentDAO">
+			<ref bean="attachmentDAO" />
+		</property>
+		<property name="attachmentExtDAO">
+			<ref bean="attachmentExtDAO" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	
+	<bean id="attachmentService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="attachmentServiceImpl" />
+	</bean>
+	<bean id="attachmentServiceImpl" class="com.atosorigin.mice.km.service.impl.AttachmentServiceImpl">
+		<property name="attachmentDAO">
+			<ref bean="attachmentDAO" />
+		</property>
+		<property name="attachmentExtDAO">
+			<ref bean="attachmentExtDAO" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+
+	<bean id="clippingService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="clippingServiceImpl" />
+	</bean>
+	<bean id="clippingServiceImpl" class="com.atosorigin.mice.km.service.impl.ClippingServiceImpl">
+		<property name="attachmentDAO">
+			<ref bean="attachmentDAO" />
+		</property>
+		<property name="attachmentExtDAO">
+			<ref bean="attachmentExtDAO" />
+		</property>
+		<property name="clippingDAO">
+			<ref bean="clippingDAO" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	<bean id="projectService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="projectServiceImpl" />
+	</bean>
+	<bean id="projectServiceImpl" class="com.atosorigin.mice.km.service.impl.ProjectServiceImpl">
+		<property name="projectDAO">
+			<ref bean="projectDAO" />
+		</property>
+		<property name="projectDetailDAO">
+			<ref bean="projectDetailDAO" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	<bean id="ciDownloadRecordService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="ciDownloadRecordServiceImpl" />
+	</bean>
+	<bean id="ciDownloadRecordServiceImpl" class="com.atosorigin.mice.km.service.impl.CiDownloadRecordServiceImpl">
+		<property name="ciDownloadRecordDAO">
+			<ref bean="ciDownloadRecordDAO" />
+		</property>
+	</bean>
+	
+	<bean id="regionTaiwanService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="regionTaiwanServiceImpl" />
+	</bean>
+	<bean id="regionTaiwanServiceImpl" class="com.atosorigin.mice.km.service.impl.RegionTaiwanServiceImpl">
+		<property name="regionTaiwanDAO">
+			<ref bean="regionTaiwanDAO" />
+		</property>
+	</bean>
+	
+	<bean id="eventCategoryService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="eventCategoryServiceImpl" />
+	</bean>
+	<bean id="eventCategoryServiceImpl" class="com.atosorigin.mice.km.service.impl.EventCategoryServiceImpl">
+		<property name="eventCategoryDAO">
+			<ref bean="eventCategoryDAO" />
+		</property>
+	</bean>
+	
+	<bean id="eventService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="eventServiceImpl" />
+	</bean>
+	<bean id="eventServiceImpl" class="com.atosorigin.mice.km.service.impl.EventServiceImpl">
+		<property name="eventDAO">
+			<ref bean="eventDAO" />
+		</property>
+		<property name="eventDetailDAO">
+			<ref bean="eventDetailDAO" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	<bean id="industryNewsCategoryService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="industryNewsCategoryServiceImpl" />
+	</bean>
+	<bean id="industryNewsCategoryServiceImpl" class="com.atosorigin.mice.km.service.impl.IndustryNewsCategoryServiceImpl">
+		<property name="industryNewsCategoryDAO">
+			<ref bean="industryNewsCategoryDAO" />
+		</property>
+	</bean>
+	
+	<bean id="industryNewsService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="industryNewsServiceImpl" />
+	</bean>
+	<bean id="industryNewsServiceImpl" class="com.atosorigin.mice.km.service.impl.IndustryNewsServiceImpl">
+		<property name="industryNewsDAO">
+			<ref bean="industryNewsDAO" />
+		</property>
+		<property name="industryNewsDetailDAO">
+			<ref bean="industryNewsDetailDAO" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	
+	<bean id="epaperService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="epaperServiceImpl" />
+	</bean>
+	<bean id="epaperServiceImpl" class="com.atosorigin.mice.km.service.impl.EpaperServiceImpl">
+		<property name="epaperDAO">
+			<ref bean="epaperDAO" />
+		</property>
+	</bean>
+	
+	
+	<bean id="overseasEventService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="overseasEventServiceImpl" />
+	</bean>
+	<bean id="overseasEventServiceImpl" class="com.atosorigin.mice.km.service.impl.OverseasEventServiceImpl">
+		<property name="overseasEventDAO">
+			<ref bean="overseasEventDAO" />
+		</property>
+		<property name="overseasEventDetailDAO">
+			<ref bean="overseasEventDetailDAO" />
+		</property>
+		<property name="regionCategoryDAO">
+			<ref bean="regionCategoryDAO" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	<bean id="regionCategoryService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="regionCategoryServiceImpl" />
+	</bean>
+	<bean id="regionCategoryServiceImpl" class="com.atosorigin.mice.km.service.impl.RegionCategoryServiceImpl">
+		<property name="regionCategoryDAO">
+			<ref bean="regionCategoryDAO" />
+		</property>
+	</bean>
+	
+	<bean id="propagandaService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="propagandaServiceImpl" />
+	</bean>
+	<bean id="propagandaServiceImpl" class="com.atosorigin.mice.km.service.impl.PropagandaServiceImpl">
+		<property name="propagandaDAO">
+			<ref bean="propagandaDAO" />
+		</property>
+		<property name="sendMailUtil">
+			<ref bean="sendMailUtil" />
+		</property>
+	</bean>
+</beans>

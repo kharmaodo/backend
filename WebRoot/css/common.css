@@ -1,0 +1,253 @@
+body { 
+	margin-top: 0px;　
+	margin-left: auto;
+　　margin-right: auto;　
+	margin-bottom: 0px;
+	font-size: 14px;
+	font-family: Ariel, "Microsoft JhengHei", Serif;
+	background-color: #FFFFFF;
+	text-align: center; 
+}
+
+th {
+	text-align: center;
+}
+
+#header {
+	margin: 0 auto; 
+	width:1000px;
+	color: #FFFFFF;
+    background-color: #014284; 
+    font-size: 14px; 
+    text-align:left;  
+}
+
+#menubar {
+	margin: 0 auto;
+	text-align:left; 
+	width:1000px;
+	color: #FFFFFF;
+    background-color: #014284; 
+    font-size: 14px; 
+}
+
+#body {
+	margin: 0 auto; 
+	width:1000px;
+	font-size: 14px;
+	text-align:left; 
+}
+
+#footer {
+	margin: 0 auto;
+	text-align:left; 
+	width:1000px;
+	color: #FFFFFF;
+    background-color: #4261AA; 
+    font-size: 10px; 
+}
+
+.field {
+	text-align : left;
+}
+
+.label {
+	text-align : right;
+	background-color: #EEEEEE;
+}
+
+hr {
+	width: 1000px;
+	border-style: dotted;
+	border-width: 1px;
+	border-color: #A7DEB5;
+}
+
+.login {
+	position: relative; 
+	top: 10px;
+	width: 600px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #AAAAAA;
+}
+
+.login_L {
+	position: relative; 
+	top: 10px;
+	width: 900px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #AAAAAA;
+}
+
+.login_block {
+	float: left;
+	width: 448px;
+}
+
+a {		
+    text-decoration: none;
+   	color:#225588;
+   	font-size:14px;
+}
+   		
+a:hover {	
+    color:#FF6600;
+    text-decoration:underline;
+   	font-size:14px;
+}
+
+input {	
+    border-bottom: 1px solid;
+   	border-left: 1px solid;
+   	border-right: 1px solid;
+   	border-top: 1px solid;
+   	boder-color: #003366;
+   	COLOR: #003366;
+   	font-size: 14px;
+}
+
+input.noborder {	
+    border-bottom: 0px solid;
+   	border-left: 0px solid;
+   	border-right: 0px solid;
+   	border-top: 0px solid;
+   	font-size: 14px;
+}
+
+.required {	
+    border-bottom: 1px solid;
+   	border-left: 1px solid;
+   	border-right: 1px solid;
+   	border-top: 1px solid;
+   	boder-color: #003366;
+   	COLOR: #003366;
+   	font-size: 14px;
+   	background-image: url(/backend/images/need.jpg);
+   	background-repeat: no-repeat;
+}
+
+.error {
+	color: #FF0000;
+	text-align: left;
+}
+
+.column {
+	background-color: #AAD5D5;
+	color: #FFFFFF;
+}
+
+.gray {
+	background-color: #DDDDDD;
+}
+
+.even {
+	background-color: #FFFFFF;
+}
+
+.odd {
+	background-color: #E9F3F3;
+}
+
+#list {
+    width: 1000px; 
+	border-style: solid;
+	border-width: 0px;
+}
+
+#list_short {
+    width: 650px; 
+	border-style: solid;
+	border-width: 0px;
+}
+
+#image-first-active {
+	background-image: url(/backend/images/icon_active_16x16.png);
+    background-position: -80px -160px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+#image-prev-active {
+	background-image: url(/backend/images/icon_active_16x16.png);
+   	background-position: -48px -160px;
+   	width: 16px;
+   	height: 16px;
+   	cursor: pointer;
+}
+
+#image-next-active {
+	background-image: url(/backend/images/icon_active_16x16.png);
+   	background-position: -32px -160px;
+   	width: 16px;
+   	height: 16px;
+   	cursor: pointer;
+}
+
+#image-last-active {
+	background-image: url(/backend/images/icon_active_16x16.png);
+   	background-position: -64px -160px;
+   	width: 16px;
+   	height: 16px;
+   	cursor: pointer;
+}
+
+#image-first-disabled {
+	background-image: url(/backend/images/icon_disabled_16x16.png);
+    background-position: -80px -160px;
+    width: 16px;
+    height: 16px;
+}
+
+#image-prev-disabled {
+	background-image: url(/backend/images/icon_disabled_16x16.png);
+   	background-position: -48px -160px;
+   	width: 16px;
+   	height: 16px;
+}
+
+#image-next-disabled {
+	background-image: url(/backend/images/icon_disabled_16x16.png);
+   	background-position: -32px -160px;
+   	width: 16px;
+   	height: 16px;
+}
+
+#image-last-disabled {
+	background-image: url(/backend/images/icon_disabled_16x16.png);
+   	background-position: -64px -160px;
+   	width: 16px;
+   	height: 16px;
+}
+
+#image-asc {
+	background-image: url(/backend/images/icon_active_16x16.png);
+   	background-position: -0px -16px;
+   	width: 16px;
+   	height: 16px;
+   	cursor: pointer;
+   	float: right;
+}
+
+#image-desc {
+	background-image: url(/backend/images/icon_active_16x16.png);
+   	background-position: -64px -16px;
+   	width: 16px;
+   	height: 16px;
+   	cursor: pointer;
+   	float: right;
+}
+
+#condition {
+	position: relative; 
+	top: 5px;
+}
+
+#result {
+	position: relative; 
+	top: 5px;
+	width: 370 px;
+}
+

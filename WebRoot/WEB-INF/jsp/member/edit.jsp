@@ -1,0 +1,88 @@
+<%@page pageEncoding="UTF-8"%>
+<%@include file="/WEB-INF/jsp/common/tags.jsp"%>
+<!-- JSTL START -->
+<c:choose>
+	<c:when test="${command.gender eq 'F'}">
+		<c:set var="gender_check_f" value="checked"/>
+	</c:when>
+	<c:otherwise>
+		<c:set var="gender_check_m" value="checked"/>
+	</c:otherwise>
+</c:choose>
+<!-- JSTL END -->
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#first_input').focus();
+	$('input:text').addClass('required');
+});
+</script>
+<br/>
+<br/>
+<center>
+  <form name="memberEditForm" method="POST" action="<c:url value="docmem.htm?act=update"/>">
+  	 <div class="login">
+  	<table class="category_edit">
+  		<tr>
+  			<td colspan="3" align="center">
+  				<h3><spring:message code="text.personal.management"/></h3>
+  			</td>
+  		</tr>
+  		<tr>
+  			<spring:bind path="command.account">
+  			<td class="label"><spring:message code="text.account"/></td>
+  			<td class="field">${status.value}<input type="hidden" name="account" value="${status.value}"/></td>
+  			<td>
+  				<div class="error">${status.errorMessage}</div>
+  			</td>
+  			</spring:bind>
+  		</tr>
+  		<tr>
+  			<spring:bind path="command.name">
+  			<td class="label"><spring:message code="text.name"/></td>
+  			<td class="field"><input id="first_input" type="text" name="name"  value="${status.value}"/></td>
+  			<td>${status.errorMessage}</td>
+  			</spring:bind>
+  		</tr>
+  		<tr>
+  			<spring:bind path="command.vendorCategoryId">
+  			<td class="label"><spring:message code="text.cloumn.org"/></td>
+  			<td class="field"><input type="text" name="vendorCategoryId"  value="${status.value}" class="need"/></td>
+  			<td class="error">${status.errorMessage}</td>
+  			</spring:bind>
+  		</tr>
+  		<tr>
+  			<spring:bind path="command.gender">
+  			<td class="label"><spring:message code="text.gender"/></td>
+  			<td class="field">
+  				<input type="radio" name="gender" value="F" ${gender_check_f} class="noborder"/><spring:message code="text.female"/>&nbsp;&nbsp;
+  				<input type="radio" name="gender" value="M" ${gender_check_m} class="noborder"><spring:message code="text.male"/>
+  			</td>
+  			<td>${status.errorMessage}</td>
+  			</spring:bind>
+  		</tr>
+  		<tr>
+  			<spring:bind path="command.phone">
+  			<td class="label"><spring:message code="text.phone"/></td>
+  			<td class="field"><input type="text" name="phone" value="${status.value}" class="need"/></td>
+  			<td>${status.errorMessage}</td>
+  			</spring:bind>
+  		</tr>
+  		<tr>
+  			<spring:bind path="command.address">
+  			<td class="label"><spring:message code="text.address"/></td>
+  			<td class="field"><input type="text" name="address" value="${status.value}"/></td>
+  			<td>${status.errorMessage}</td>
+  			</spring:bind>
+  		</tr>
+  		<tr>
+			<td colspan="3" align="right">
+				<input type="submit" value="<spring:message code="text.submit"/>">&nbsp;&nbsp;
+				<input type="button" value="<spring:message code="text.reset"/>" onclick="toReset()">
+			</td>
+		</tr>
+  	</table>
+  	</div>
+  </form>
+</center>
+<br/>
+<br/>

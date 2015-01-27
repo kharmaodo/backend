@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING/DTD BEAN/EN" "http://www.springframework.org/dtd/spring-beans.dtd"> 
+<beans>
+
+	<!-- Tiles --> 
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/classes/tiles-defs.xml</value>
+            </list>
+        </property>
+    </bean>
+
+	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+ 		<property name="viewClass">
+ 			<value>org.springframework.web.servlet.view.tiles2.TilesView</value>
+ 		</property>
+ 		<property name="order" value="1"/>
+	</bean>
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+ 		<property name="prefix">
+ 			<value>/WEB-INF/jsp/</value>
+ 		</property>
+ 		<property name="suffix">
+ 			<value>.jsp</value>
+ 		</property>
+ 		<property name="order" value="2"/>
+	</bean>
+	
+
+   
+	<!-- URL mapping -->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+			<props>
+			    <prop key="/register.htm">registerController</prop>
+			    <prop key="/forgot.htm">forgotController</prop>
+			    <prop key="/active.htm">activeController</prop>
+			    <prop key="/login.htm">loginController</prop>
+			    <prop key="/logout.htm">logoutController</prop>
+			    <prop key="/member.htm">memberController</prop>
+			    <prop key="/docmem.htm">memberController</prop>
+			    <prop key="/private.htm">memberController</prop>
+			    <prop key="/category.htm">categoryController</prop>
+			    <prop key="/doc.htm">documentController</prop>
+			    <prop key="/home.htm">homeController</prop>
+			    <prop key="/ciapp.htm">ciApplicationController</prop>
+			    <prop key="/imgapp.htm">ciApplicationController</prop>
+			    <prop key="/news.htm">backendNewsController</prop>
+			    <prop key="/log.htm">docLogController</prop>
+			    <prop key="/video.htm">videoController</prop>
+			    <prop key="/case.htm">caseStudyController</prop>
+			    <prop key="/mapp.htm">mappApplicationController</prop>
+			    <prop key="/excel.htm">excelController</prop>
+			    <prop key="/clip.htm">clippingController</prop>
+			    <prop key="/pr.htm">pressReleaseController</prop>
+			    <prop key="/ann.htm">announcementController</prop>
+			    <prop key="/project.htm">projectController</prop>
+			    <prop key="/event.htm">eventController</prop>
+			    <prop key="/eventApp.htm">eventController</prop>
+			    <prop key="/industryNewsApp.htm">industryNewsController</prop>
+			    <prop key="/industryNews.htm">industryNewsController</prop>
+			    <prop key="/venue.htm">venueController</prop>
+			    <prop key="/att.htm">attachmentController</prop>
+			    <prop key="/epaper.htm">epaperController</prop>
+			    <prop key="/oversea.htm">overseasEventController</prop>
+			    <prop key="/prop.htm">propagandaController</prop>
+			</props>
+		</property>
+    </bean>
+
+    <bean id="viewController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+
+	<!-- MultiActionController parameter name  -->
+	<bean id="paraMethodResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName">
+			<value>act</value>
+		</property>
+	</bean>
+	
+	<!-- upload file size limit -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">    
+        <property name="maxUploadSize">
+            <value>30000000</value>
+        </property>
+        <property name="defaultEncoding">  
+            <value>UTF-8</value>  
+        </property> 
+    </bean>    
+    
+	<!-- controllers -->
+	<bean id="registerController" class="com.atosorigin.mice.km.controller.RegisterController">
+		<property name="docMembersService">
+			<ref bean="docMembersService"/>
+		</property>
+		<property name="validators">
+			<ref bean="registerValidator"/>
+		</property>
+		<property name="successView">
+			<value>registerSuccess</value>
+		</property>
+		<property name="formView">
+			<value>register</value>
+		</property>
+	</bean>
+	
+	<bean id="forgotController" class="com.atosorigin.mice.km.controller.ForgotController">
+		<property name="docMembersService">
+			<ref bean="docMembersService"/>
+		</property>
+		<property name="validators">
+			<ref bean="forgotValidator"/>
+		</property>
+		<property name="successView">
+			<value>forgotSuccess</value>
+		</property>
+		<property name="formView">
+			<value>forgot</value>
+		</property>
+	</bean>
+	
+	
+	<bean id="activeController" class="com.atosorigin.mice.km.controller.ActiveController">
+		<property name="docMembersService">
+			<ref bean="docMembersService"/>
+		</property>
+		<property name="success">
+			<value>activeSuccess</value>
+		</property>
+		<property name="fail">
+			<value>activeFail</value>
+		</property>
+	</bean>
+	
+	<bean id="loginController" class="com.atosorigin.mice.km.controller.LoginController">
+		<property name="docMembersService">
+			<ref bean="docMembersService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="validators">
+			<ref bean="loginValidator"/>
+		</property>
+		<property name="successView">
+			<value>loginSuccess</value>
+		</property>
+		<property name="formView">
+			<value>login</value>
+		</property>
+	</bean>
+	
+	<bean id="logoutController" class="com.atosorigin.mice.km.controller.LogoutController">
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+	</bean>
+	
+	<bean id="memberController" class="com.atosorigin.mice.km.controller.MemberController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="docMembersService">
+			<ref bean="docMembersService"/>
+		</property>
+		<property name="membersService">
+			<ref bean="membersService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="groupsService">
+			<ref bean="groupsService"/>
+		</property>
+		<property name="changePasswordValidator">
+			<ref bean="changePasswordValidator"/>
+		</property>
+		<property name="memberEditValidator">
+			<ref bean="memberEditValidator"/>
+		</property>
+		<property name="memberListValidator">
+			<ref bean="memberListValidator"/>
+		</property>
+		<property name="memberAdminValidator">
+			<ref bean="memberAdminValidator"/>
+		</property>
+		<property name="changePasswordSuccess">
+			<value>changePasswordSuccess</value>
+		</property>
+		<property name="changePasswordForm">
+			<value>changePasswordForm</value>
+		</property>
+		<property name="editSuccess">
+			<value>memberEditSuccess</value>
+		</property>
+		<property name="editForm">
+			<value>memberEditForm</value>
+		</property>
+		<property name="listForm">
+			<value>memberListForm</value>
+		</property>
+		<property name="listResult">
+			<value>memberListResult</value>
+		</property>
+		<property name="adminForm">
+			<value>memberAdminForm</value>
+		</property>
+		<property name="insertForm">
+			<value>memberInsertForm</value>
+		</property>
+		<property name="insertSuccess">
+			<value>memberInsertSuccess</value>
+		</property>
+		<property name="listMTForm">
+			<value>memberListFormMT</value>
+		</property>
+		<property name="listMTResult">
+			<value>memberListResultMT</value>
+		</property>
+		<property name="adminMTForm">
+			<value>memberAdminFormMT</value>
+		</property>
+	</bean>
+	
+	<bean id="categoryController" class="com.atosorigin.mice.km.controller.CategoryController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="documentCategoryService">
+			<ref bean="documentCategoryService"/>
+		</property>
+		<property name="localizedDataService">
+			<ref bean="localizedDataService"/>
+		</property>
+		<property name="documentCategoryEditValidator">
+			<ref bean="documentCategoryEditValidator"/>
+		</property>
+		<property name="documentCategoryListValidator">
+			<ref bean="documentCategoryListValidator"/>
+		</property>
+		<property name="insert">
+			<value>documentCategoryInsert</value>
+		</property>
+		<property name="insertSuccess">
+			<value>documentCategoryInsertSuccess</value>
+		</property>
+		<property name="list">
+			<value>documentCategoryList</value>
+		</property>
+		<property name="listResult">
+			<value>documentCategoryListResult</value>
+		</property>
+		<property name="update">
+			<value>documentCategoryUpdate</value>
+		</property>
+		<property name="updateSuccess">
+			<value>documentCategoryUpdateSuccess</value>
+		</property>
+	</bean>
+	
+	<bean id="documentController" class="com.atosorigin.mice.km.controller.DocumentController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="documentService">
+			<ref bean="documentService"/>
+		</property>
+		<property name="documentCategoryService">
+			<ref bean="documentCategoryService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="documentEditValidator">
+			<ref bean="documentEditValidator"/>
+		</property>
+		<property name="documentListValidator">
+			<ref bean="documentListValidator"/>
+		</property>
+		<property name="insert">
+			<value>documentInsert</value>
+		</property>
+		<property name="insertSuccess">
+			<value>documentInsertSuccess</value>
+		</property>
+		<property name="listByOwnerId">
+			<value>documentListByOwnerId</value>
+		</property>
+		<property name="listByOwnerIdResult">
+			<value>documentListByOwnerIdResult</value>
+		</property>
+		<property name="updateByOwnerId">
+			<value>documentUpdateByOwnerId</value>
+		</property>
+		<property name="listByVerified">
+			<value>documentListByVerified</value>
+		</property>
+		<property name="listByVerifiedResult">
+			<value>documentListByVerifiedResult</value>
+		</property>
+		<property name="updateByVerified">
+			<value>documentUpdateByVerified</value>
+		</property>
+		<property name="listByBOFT">
+			<value>documentListByBOFT</value>
+		</property>
+		<property name="listByBOFTResult">
+			<value>documentListByBOFTResult</value>
+		</property>
+		<property name="updateByBOFT">
+			<value>documentUpdateByBOFT</value>
+		</property>
+	</bean>
+	
+	<bean id="homeController" class="com.atosorigin.mice.km.controller.HomeController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="docMembersService">
+			<ref bean="docMembersService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="backendNewsService">
+			<ref bean="backendNewsService"/>
+		</property>
+		<property name="ciApplicationService">
+			<ref bean="ciApplicationService"/>
+		</property>
+		<property name="documentService">
+			<ref bean="documentService"/>
+		</property>
+		<property name="mappApplicationService">
+			<ref bean="mappApplicationService"/>
+		</property>
+	</bean>
+	
+	<bean id="ciApplicationController" class="com.atosorigin.mice.km.controller.CiApplicationController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="ciApplicationService">
+			<ref bean="ciApplicationService"/>
+		</property>
+		<property name="ciDownloadRecordService">
+			<ref bean="ciDownloadRecordService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="listForm">
+			<value>ciappListForm</value>
+		</property>
+		<property name="listResult">
+			<value>ciappListResult</value>
+		</property>
+		<property name="listImgForm">
+			<value>ciappListImgForm</value>
+		</property>
+		<property name="listImgResult">
+			<value>ciappListImgResult</value>
+		</property>
+		<property name="detail">
+			<value>ciappDetail</value>
+		</property>
+		<property name="report">
+			<value>ciappReport</value>
+		</property>
+		<property name="reportResult">
+			<value>ciappReportResult</value>
+		</property>
+	</bean>
+	
+	
+	<bean id="backendNewsController" class="com.atosorigin.mice.km.controller.BackendNewsController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="backendNewsService">
+			<ref bean="backendNewsService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="backendNewsEditValidator">
+			<ref bean="backendNewsEditValidator"/>
+		</property>
+		<property name="insertForm">
+			<value>newsInsert</value>
+		</property>
+		<property name="insertSuccess">
+			<value>newsInsertSuccess</value>
+		</property>
+		<property name="listForm">
+			<value>newsList</value>
+		</property>
+		<property name="listResult">
+			<value>newsListResult</value>
+		</property>
+		<property name="listResultForHome">
+			<value>newsListResultForHome</value>
+		</property>
+		<property name="updateForm">
+			<value>newsUpdate</value>
+		</property>
+	</bean>
+	
+	<bean id="docLogController" class="com.atosorigin.mice.km.controller.DocLogController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="listForm">
+			<value>logList</value>
+		</property>
+		<property name="listResult">
+			<value>logListResult</value>
+		</property>
+	</bean>
+	
+	<bean id="videoController" class="com.atosorigin.mice.km.controller.VideoController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="videoService">
+			<ref bean="videoService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="videoEditValidator">
+			<ref bean="videoEditValidator"/>
+		</property>
+		<property name="listForm">
+			<value>videoList</value>
+		</property>
+		<property name="listResult">
+			<value>videoListResult</value>
+		</property>
+		<property name="insertForm">
+			<value>videoInsert</value>
+		</property>
+		<property name="insertSuccess">
+			<value>videoInsertSuccess</value>
+		</property>
+		<property name="updateForm">
+			<value>videoUpdate</value>
+		</property>
+	</bean>
+	
+	<bean id="caseStudyController" class="com.atosorigin.mice.km.controller.CaseStudyController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="caseStudyService">
+			<ref bean="caseStudyService"/>
+		</property>
+		<property name="caseStudyCategoryService">
+			<ref bean="caseStudyCategoryService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="caseStudyEditValidator">
+			<ref bean="caseStudyEditValidator"/>
+		</property>
+		<property name="listForm">
+			<value>caseList</value>
+		</property>
+		<property name="listResult">
+			<value>caseListResult</value>
+		</property>
+		<property name="insertForm">
+			<value>caseInsert</value>
+		</property>
+		<property name="insertSuccess">
+			<value>caseInsertSuccess</value>
+		</property>
+		<property name="updateForm">
+			<value>caseUpdate</value>
+		</property>
+	</bean>
+	
+	<bean id="mappApplicationController" class="com.atosorigin.mice.km.controller.MappApplicationController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="mappApplicationService">
+			<ref bean="mappApplicationService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="listForm">
+			<value>mappListForm</value>
+		</property>
+		<property name="listResult">
+			<value>mappListResult</value>
+		</property>
+		<property name="detail">
+			<value>mappDetail</value>
+		</property>
+	</bean>
+	
+	<bean id="excelController" class="com.atosorigin.mice.km.controller.ExcelController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="ciApplicationService">
+			<ref bean="ciApplicationService"/>
+		</property>
+		<property name="ciExcelView">
+			<ref bean="ciExcelView"/>
+		</property>
+		<property name="mappApplicationService">
+			<ref bean="mappApplicationService"/>
+		</property>
+		<property name="mappExcelView">
+			<ref bean="mappExcelView"/>
+		</property>
+	</bean>
+
+	<bean id="clippingController" class="com.atosorigin.mice.km.controller.ClippingController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="clippingService">
+			<ref bean="clippingService"/>
+		</property>
+		<property name="attachmentService">
+			<ref bean="attachmentService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="clippingEditValidator">
+			<ref bean="clippingEditValidator"/>
+		</property>
+		<property name="insertForm">
+			<value>clipInsert</value>
+		</property>
+		<property name="insertSuccess">
+			<value>clipInsertSuccess</value>
+		</property>
+		<property name="listForm">
+			<value>clipList</value>
+		</property>
+		<property name="listResult">
+			<value>clipListResult</value>
+		</property>
+		<property name="updateForm">
+			<value>clipUpdate</value>
+		</property>
+	</bean>
+	
+	<bean id="pressReleaseController" class="com.atosorigin.mice.km.controller.PressReleaseController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="pressReleaseService">
+			<ref bean="pressReleaseService"/>
+		</property>
+		<property name="attachmentService">
+			<ref bean="attachmentService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="pressReleaseEditValidator">
+			<ref bean="pressReleaseEditValidator"/>
+		</property>
+		<property name="insertForm">
+			<value>pressReleaseInsert</value>
+		</property>
+		<property name="insertSuccess">
+			<value>pressReleaseInsertSuccess</value>
+		</property>
+		<property name="listForm">
+			<value>pressReleaseList</value>
+		</property>
+		<property name="listResult">
+			<value>pressReleaseListResult</value>
+		</property>
+		<property name="updateForm">
+			<value>pressReleaseUpdate</value>
+		</property>
+	</bean>
+	
+	
+	<bean id="announcementController" class="com.atosorigin.mice.km.controller.AnnouncementController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="announcementService">
+			<ref bean="announcementService"/>
+		</property>
+		<property name="attachmentService">
+			<ref bean="attachmentService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="announcementEditValidator">
+			<ref bean="announcementEditValidator"/>
+		</property>
+		<property name="insertForm">
+			<value>announcementInsert</value>
+		</property>
+		<property name="insertSuccess">
+			<value>announcementInsertSuccess</value>
+		</property>
+		<property name="listForm">
+			<value>announcementList</value>
+		</property>
+		<property name="listResult">
+			<value>announcementListResult</value>
+		</property>
+		<property name="updateForm">
+			<value>announcementUpdate</value>
+		</property>
+	</bean>
+	
+	
+	<bean id="projectController" class="com.atosorigin.mice.km.controller.ProjectController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="projectService">
+			<ref bean="projectService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="localizedDataService">
+			<ref bean="localizedDataService"/>
+		</property>
+		<property name="projectEditValidator">
+			<ref bean="projectEditValidator"/>
+		</property>
+		<property name="insertForm">
+			<value>projectInsert</value>
+		</property>
+		<property name="insertSuccess">
+			<value>projectInsertSuccess</value>
+		</property>
+		<property name="dirtySuccess">
+			<value>projectDirtySuccess</value>
+		</property>
+		<property name="listForm">
+			<value>projectList</value>
+		</property>
+		<property name="listResult">
+			<value>projectListResult</value>
+		</property>
+		<property name="updateForm">
+			<value>projectUpdate</value>
+		</property>
+	</bean>
+	
+	<bean id="eventController" class="com.atosorigin.mice.km.controller.EventController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="eventService">
+			<ref bean="eventService"/>
+		</property>
+		<property name="eventCategoryService">
+			<ref bean="eventCategoryService"/>
+		</property>
+		<property name="regionTaiwanService">
+			<ref bean="regionTaiwanService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="eventEditValidator">
+			<ref bean="eventEditValidator"/>
+		</property>
+		<property name="insertForm">
+			<value>eventInsert</value>
+		</property>
+		<property name="insertSuccess">
+			<value>eventInsertSuccess</value>
+		</property>
+		<property name="listForm">
+			<value>eventList</value>
+		</property>
+		<property name="listResult">
+			<value>eventListResult</value>
+		</property>
+		<property name="updateForm">
+			<value>eventUpdate</value>
+		</property>
+		<property name="listAppResult">
+			<value>eventListAppResult</value>
+		</property>
+		<property name="updateAppForm">
+			<value>eventUpdateAppResult</value>
+		</property>
+	</bean>
+	
+	
+	<bean id="industryNewsController" class="com.atosorigin.mice.km.controller.IndustryNewsController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="industryNewsService">
+			<ref bean="industryNewsService"/>
+		</property>
+		<property name="industryNewsCategoryService">
+			<ref bean="industryNewsCategoryService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="industryNewsEditValidator">
+			<ref bean="industryNewsEditValidator"/>
+		</property>
+		<property name="insertForm">
+			<value>industryNewsInsert</value>
+		</property>
+		<property name="insertSuccess">
+			<value>industryNewsInsertSuccess</value>
+		</property>
+		<property name="listForm">
+			<value>industryNewsList</value>
+		</property>
+		<property name="listResult">
+			<value>industryNewsListResult</value>
+		</property>
+		<property name="updateForm">
+			<value>industryNewsUpdate</value>
+		</property>
+		<property name="listAppResult">
+			<value>industryNewsListAppResult</value>
+		</property>
+		<property name="updateAppForm">
+			<value>industryNewsUpdateAppResult</value>
+		</property>
+	</bean>
+	
+	
+	<bean id="venueController" class="com.atosorigin.mice.km.controller.VenueController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="venueService">
+			<ref bean="venueService"/>
+		</property>
+		<property name="venueCategoryService">
+			<ref bean="venueCategoryService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="regionTaiwanService">
+			<ref bean="regionTaiwanService"/>
+		</property>
+		<property name="localizedDataService">
+			<ref bean="localizedDataService"/>
+		</property>
+		<property name="insertForm">
+			<value>venueInsert</value>
+		</property>
+		<property name="insertSuccess">
+			<value>venueInsertSuccess</value>
+		</property>
+		<property name="listForm">
+			<value>venueList</value>
+		</property>
+		<property name="listResult">
+			<value>venueListResult</value>
+		</property>
+		<property name="updateForm">
+			<value>venueUpdate</value>
+		</property>
+	</bean>
+	
+	<bean id="attachmentController" class="com.atosorigin.mice.km.controller.AttachmentController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="attachmentService">
+			<ref bean="attachmentService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+	</bean>
+	
+	<bean id="epaperController" class="com.atosorigin.mice.km.controller.EpaperController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="epaperService">
+			<ref bean="epaperService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="insertForm">
+			<value>epaperInsert</value>
+		</property>
+		<property name="insertSuccess">
+			<value>epaperInsertSuccess</value>
+		</property>
+		<property name="listForm">
+			<value>epaperList</value>
+		</property>
+		<property name="listResult">
+			<value>epaperListResult</value>
+		</property>
+		<property name="updateForm">
+			<value>epaperUpdate</value>
+		</property>
+	</bean>
+	
+	<bean id="overseasEventController" class="com.atosorigin.mice.km.controller.OverseasEventController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="overseasEventService">
+			<ref bean="overseasEventService"/>
+		</property>
+		<property name="regionCategoryService">
+			<ref bean="regionCategoryService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="insertForm">
+			<value>overseaInsert</value>
+		</property>
+		<property name="insertSuccess">
+			<value>overseaInsertSuccess</value>
+		</property>
+		<property name="listForm">
+			<value>overseaList</value>
+		</property>
+		<property name="listResult">
+			<value>overseaListResult</value>
+		</property>
+		<property name="updateForm">
+			<value>overseaUpdate</value>
+		</property>
+	</bean>
+	
+	<bean id="propagandaController" class="com.atosorigin.mice.km.controller.PropagandaController">
+		<property name="methodNameResolver">
+			<ref bean="paraMethodResolver"/>
+		</property>
+		<property name="propagandaService">
+			<ref bean="propagandaService"/>
+		</property>
+		<property name="docLogService">
+			<ref bean="docLogService"/>
+		</property>
+		<property name="listForm">
+			<value>propList</value>
+		</property>
+		<property name="listResult">
+			<value>propListResult</value>
+		</property>
+		<property name="detail">
+			<value>propDetail</value>
+		</property>
+	</bean>
+	
+</beans>

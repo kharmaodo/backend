@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING/DTD BEAN/EN" "http://www.springframework.org/dtd/spring-beans.dtd"> 
+<beans default-autowire="no" default-lazy-init="false" default-dependency-check="none">
+    
+    <!-- DAOs -->
+    <bean id="docLogDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="docLogDAOImpl" />
+	</bean>
+	<bean id="docLogDAOImpl" class="com.atosorigin.mice.km.dao.impl.DocLogDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="docMembersDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="docMembersDAOImpl" />
+	</bean>
+	<bean id="docMembersDAOImpl" class="com.atosorigin.mice.km.dao.impl.DocMembersDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="documentCategoryDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="documentCategoryDAOImpl" />
+	</bean>
+	<bean id="documentCategoryDAOImpl" class="com.atosorigin.mice.km.dao.impl.DocumentCategoryDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	<bean id="documentDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="documentDAOImpl"/>
+	</bean>
+	
+	<bean id="documentDAOImpl" class="com.atosorigin.mice.km.dao.impl.DocumentDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	<bean id="conferenceDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="conferenceDAOImpl"/>
+	</bean>
+	
+	<bean id="conferenceDAOImpl" class="com.atosorigin.mice.km.dao.impl.ConferenceDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="wiflyDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="wiflyDAOImpl"/>
+	</bean>
+	
+	<bean id="wiflyDAOImpl" class="com.atosorigin.mice.km.dao.impl.WiflyDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="membersDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="membersDAOImpl"/>
+	</bean>
+	
+	<bean id="membersDAOImpl" class="com.atosorigin.mice.km.dao.impl.MembersDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="cardUserDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="cardUserDAOImpl"/>
+	</bean>
+	
+	<bean id="cardUserDAOImpl" class="com.atosorigin.mice.km.dao.impl.CardUserDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+		<property name="wiflyDAO">
+			<ref bean="wiflyDAO" />
+		</property>
+		<property name="membersDAO">
+			<ref bean="membersDAO" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	<bean id="ciApplicationDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="ciApplicationDAOImpl"/>
+	</bean>
+	<bean id="ciApplicationDAOImpl" class="com.atosorigin.mice.km.dao.impl.CiApplicationDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	
+	<bean id="ciImageDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="ciImageDAOImpl"/>
+	</bean>
+	<bean id="ciImageDAOImpl" class="com.atosorigin.mice.km.dao.impl.CiImageDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="backendNewsDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="backendNewsDAOImpl"/>
+	</bean>
+	<bean id="backendNewsDAOImpl" class="com.atosorigin.mice.km.dao.impl.BackendNewsDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    <!-- Services -->
+    <bean id="docLogService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="docLogServiceImpl" />
+	</bean>
+	<bean id="docLogServiceImpl" class="com.atosorigin.mice.km.service.impl.DocLogServiceImpl">
+		<property name="dldao">
+			<ref bean="docLogDAO" />
+		</property>
+	</bean>
+	
+	<bean id="docMembersService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="docMembersServiceImpl" />
+	</bean>
+	<bean id="docMembersServiceImpl" class="com.atosorigin.mice.km.service.impl.DocMembersServiceImpl">
+		<property name="docMembersDAO">
+			<ref bean="docMembersDAO" />
+		</property>
+		<property name="sendMailUtil">
+			<ref bean="sendMailUtil"/>
+		</property>
+	</bean>
+	
+	<bean id="membersService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="membersServiceImpl" />
+	</bean>
+	<bean id="membersServiceImpl" class="com.atosorigin.mice.km.service.impl.MembersServiceImpl">
+		<property name="membersDAO">
+			<ref bean="membersDAO" />
+		</property>
+	</bean>
+	
+	<bean id="documentCategoryService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="documentCategoryServiceImpl" />
+	</bean>
+	<bean id="documentCategoryServiceImpl" class="com.atosorigin.mice.km.service.impl.DocumentCategoryServiceImpl">
+		<property name="documentCategoryDAO">
+			<ref bean="documentCategoryDAO" />
+		</property>
+	</bean>
+	
+	<bean id="documentService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="documentServiceImpl" />
+	</bean>
+	<bean id="documentServiceImpl" class="com.atosorigin.mice.km.service.impl.DocumentServiceImpl">
+		<property name="documentDAO">
+			<ref bean="documentDAO" />
+		</property>
+	</bean>
+	
+	<bean id="conferenceService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="conferenceServiceImpl" />
+	</bean>
+	<bean id="conferenceServiceImpl" class="com.atosorigin.mice.km.service.impl.ConferenceServiceImpl">
+		<property name="conferenceDAO">
+			<ref bean="conferenceDAO" />
+		</property>
+	</bean>
+	
+	<bean id="cardUserService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="cardUserServiceImpl" />
+	</bean>
+	<bean id="cardUserServiceImpl" class="com.atosorigin.mice.km.service.impl.CardUserServiceImpl">
+		<property name="cardUserDAO">
+			<ref bean="cardUserDAO" />
+		</property>
+		<property name="wiflyDAO">
+			<ref bean="wiflyDAO" />
+		</property>
+		<property name="membersDAO">
+			<ref bean="membersDAO" />
+		</property>
+		<property name="conferenceDAO">
+			<ref bean="conferenceDAO" />
+		</property>
+		<property name="sendMailUtil">
+			<ref bean="sendMailUtil"/>
+		</property>
+	</bean>
+	
+	<bean id="ciApplicationService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="ciApplicationServiceImpl" />
+	</bean>
+	<bean id="ciApplicationServiceImpl" class="com.atosorigin.mice.km.service.impl.CiApplicationServiceImpl">
+		<property name="ciApplicationDAO">
+			<ref bean="ciApplicationDAO" />
+		</property>
+		<property name="ciImageDAO">
+			<ref bean="ciImageDAO" />
+		</property>
+	</bean>
+	
+	<bean id="backendNewsService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="backendNewsServiceImpl" />
+	</bean>
+	<bean id="backendNewsServiceImpl" class="com.atosorigin.mice.km.service.impl.BackendNewsServiceImpl">
+		<property name="backendNewsDAO">
+			<ref bean="backendNewsDAO" />
+		</property>
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!--  Mail Setting -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+  		<property name="host" value="${mail_smtp_host}"/>
+	</bean>
+	
+	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+  		<property name="from" value="${mail_from}"/>
+	</bean>
+	
+	<!-- DWR -->
+	<bean id="dwrUtil" class="com.atosorigin.mice.km.util.DwrUtil">
+		<property name="docMembersDAO">
+			<ref bean="docMembersDAO"/>
+		</property>
+		<property name="documentCategoryDAO">
+			<ref bean="documentCategoryDAO"/>
+		</property>
+		<property name="messageSource">
+			<ref bean="messageSource"/>
+		</property>
+	</bean>
+	
+	<!-- SendMail -->
+	<bean id="sendMailUtil" class="com.atosorigin.mice.km.util.SendMailUtil">
+		<property name="mailSender">
+			<ref bean="mailSender"/>
+		</property>
+		<property name="templateMessage">
+			<ref bean="templateMessage"/>
+		</property>
+		<property name="from" value="${mail_from}"/>
+	</bean>
+
+</beans>

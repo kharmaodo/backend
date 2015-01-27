@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING/DTD BEAN/EN" "http://www.springframework.org/dtd/spring-beans.dtd"> 
+<beans default-autowire="no" default-lazy-init="false" default-dependency-check="none">
+	<bean id="attachmentDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="attachmentDAOImpl" />
+	</bean>
+	<bean id="attachmentDAOImpl" class="com.atosorigin.mice.km.dao.impl.AttachmentDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="attachmentExtDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="attachmentExtDAOImpl" />
+	</bean>
+	<bean id="attachmentExtDAOImpl" class="com.atosorigin.mice.km.dao.impl.AttachmentExtDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+
+
+    <bean id="docLogDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="docLogDAOImpl" />
+	</bean>
+	<bean id="docLogDAOImpl" class="com.atosorigin.mice.km.dao.impl.DocLogDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="docMembersDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="docMembersDAOImpl" />
+	</bean>
+	<bean id="docMembersDAOImpl" class="com.atosorigin.mice.km.dao.impl.DocMembersDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="documentCategoryDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="documentCategoryDAOImpl" />
+	</bean>
+	<bean id="documentCategoryDAOImpl" class="com.atosorigin.mice.km.dao.impl.DocumentCategoryDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="localizedDataDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="localizedDataDAOImpl" />
+	</bean>
+	<bean id="localizedDataDAOImpl" class="com.atosorigin.mice.km.dao.impl.LocalizedDataDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="categoryLocalizedDataDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="categoryLocalizedDataDAOImpl" />
+	</bean>
+	<bean id="categoryLocalizedDataDAOImpl" class="com.atosorigin.mice.km.dao.impl.CategoryLocalizedDataDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="documentDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="documentDAOImpl"/>
+	</bean>
+	
+	<bean id="documentDAOImpl" class="com.atosorigin.mice.km.dao.impl.DocumentDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+		<property name="documentCategoryDAO">
+			<ref bean="documentCategoryDAO" />
+		</property>
+		<property name="documentDetailDAO">
+			<ref bean="documentDetailDAO" />
+		</property>
+		<property name="attachmentDAO">
+			<ref bean="attachmentDAO" />
+		</property>
+		<property name="attachmentExtDAO">
+			<ref bean="attachmentExtDAO" />
+		</property>
+	</bean>
+	
+	<bean id="documentDetailDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="documentDetailDAOImpl"/>
+	</bean>
+	
+	<bean id="documentDetailDAOImpl" class="com.atosorigin.mice.km.dao.impl.DocumentDetailDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="wiflyDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="wiflyDAOImpl"/>
+	</bean>
+	
+	<bean id="wiflyDAOImpl" class="com.atosorigin.mice.km.dao.impl.WiflyDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="membersDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="membersDAOImpl"/>
+	</bean>
+	
+	<bean id="membersDAOImpl" class="com.atosorigin.mice.km.dao.impl.MembersDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="ciApplicationDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="ciApplicationDAOImpl"/>
+	</bean>
+	<bean id="ciApplicationDAOImpl" class="com.atosorigin.mice.km.dao.impl.CiApplicationDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	
+	<bean id="ciImageDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="ciImageDAOImpl"/>
+	</bean>
+	<bean id="ciImageDAOImpl" class="com.atosorigin.mice.km.dao.impl.CiImageDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="backendNewsDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="backendNewsDAOImpl"/>
+	</bean>
+	<bean id="backendNewsDAOImpl" class="com.atosorigin.mice.km.dao.impl.BackendNewsDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="groupsDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="groupsDAOImpl"/>
+	</bean>
+	<bean id="groupsDAOImpl" class="com.atosorigin.mice.km.dao.impl.GroupsDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="vendorCategoryDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="vendorCategoryDAOImpl"/>
+	</bean>
+	<bean id="vendorCategoryDAOImpl" class="com.atosorigin.mice.km.dao.impl.VendorCategoryDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="videoDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="videoDAOImpl"/>
+	</bean>
+	<bean id="videoDAOImpl" class="com.atosorigin.mice.km.dao.impl.VideoDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="videoDetailDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="videoDetailDAOImpl"/>
+	</bean>
+	<bean id="videoDetailDAOImpl" class="com.atosorigin.mice.km.dao.impl.VideoDetailDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="caseStudyCategoryDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="caseStudyCategoryDAOImpl"/>
+	</bean>
+	<bean id="caseStudyCategoryDAOImpl" class="com.atosorigin.mice.km.dao.impl.CaseStudyCategoryDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="caseStudyDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="caseStudyDAOImpl"/>
+	</bean>
+	<bean id="caseStudyDAOImpl" class="com.atosorigin.mice.km.dao.impl.CaseStudyDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="caseStudyDetailDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="caseStudyDetailDAOImpl"/>
+	</bean>
+	<bean id="caseStudyDetailDAOImpl" class="com.atosorigin.mice.km.dao.impl.CaseStudyDetailDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="mappApplicationDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="mappApplicationDAOImpl"/>
+	</bean>
+	<bean id="mappApplicationDAOImpl" class="com.atosorigin.mice.km.dao.impl.MappApplicationDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="venueCategoryDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="venueCategoryDAOImpl"/>
+	</bean>
+	<bean id="venueCategoryDAOImpl" class="com.atosorigin.mice.km.dao.impl.VenueCategoryDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="venueDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="venueDAOImpl"/>
+	</bean>
+	<bean id="venueDAOImpl" class="com.atosorigin.mice.km.dao.impl.VenueDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="venueDetailDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="venueDetailDAOImpl"/>
+	</bean>
+	<bean id="venueDetailDAOImpl" class="com.atosorigin.mice.km.dao.impl.VenueDetailDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="pressReleaseDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="pressReleaseDAOImpl"/>
+	</bean>
+	<bean id="pressReleaseDAOImpl" class="com.atosorigin.mice.km.dao.impl.PressReleaseDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="pressReleaseDetailDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="pressReleaseDetailDAOImpl"/>
+	</bean>
+	<bean id="pressReleaseDetailDAOImpl" class="com.atosorigin.mice.km.dao.impl.PressReleaseDetailDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="clippingDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="clippingDAOImpl"/>
+	</bean>
+	<bean id="clippingDAOImpl" class="com.atosorigin.mice.km.dao.impl.ClippingDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+ 
+	<bean id="projectDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="projectDAOImpl"/>
+	</bean>
+	<bean id="projectDAOImpl" class="com.atosorigin.mice.km.dao.impl.ProjectDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="projectDetailDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="projectDetailDAOImpl"/>
+	</bean>
+	<bean id="projectDetailDAOImpl" class="com.atosorigin.mice.km.dao.impl.ProjectDetailDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	
+	<bean id="ciDownloadRecordDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="ciDownloadRecordDAOImpl"/>
+	</bean>
+	<bean id="ciDownloadRecordDAOImpl" class="com.atosorigin.mice.km.dao.impl.CiDownloadRecordDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="regionTaiwanDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="regionTaiwanDAOImpl"/>
+	</bean>
+	<bean id="regionTaiwanDAOImpl" class="com.atosorigin.mice.km.dao.impl.RegionTaiwanDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="eventCategoryDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="eventCategoryDAOImpl"/>
+	</bean>
+	<bean id="eventCategoryDAOImpl" class="com.atosorigin.mice.km.dao.impl.EventCategoryDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="eventDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="eventDAOImpl"/>
+	</bean>
+	<bean id="eventDAOImpl" class="com.atosorigin.mice.km.dao.impl.EventDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="eventDetailDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="eventDetailDAOImpl"/>
+	</bean>
+	<bean id="eventDetailDAOImpl" class="com.atosorigin.mice.km.dao.impl.EventDetailDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="industryNewsCategoryDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="industryNewsCategoryDAOImpl"/>
+	</bean>
+	<bean id="industryNewsCategoryDAOImpl" class="com.atosorigin.mice.km.dao.impl.IndustryNewsCategoryDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="industryNewsDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="industryNewsDAOImpl"/>
+	</bean>
+	<bean id="industryNewsDAOImpl" class="com.atosorigin.mice.km.dao.impl.IndustryNewsDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="industryNewsDetailDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="industryNewsDetailDAOImpl"/>
+	</bean>
+	<bean id="industryNewsDetailDAOImpl" class="com.atosorigin.mice.km.dao.impl.IndustryNewsDetailDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="announcementDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="announcementDAOImpl"/>
+	</bean>
+	<bean id="announcementDAOImpl" class="com.atosorigin.mice.km.dao.impl.AnnouncementDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="announcementDetailDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="announcementDetailDAOImpl"/>
+	</bean>
+	<bean id="announcementDetailDAOImpl" class="com.atosorigin.mice.km.dao.impl.AnnouncementDetailDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="epaperDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="epaperDAOImpl"/>
+	</bean>
+	<bean id="epaperDAOImpl" class="com.atosorigin.mice.km.dao.impl.EpaperDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	
+	<bean id="overseasEventDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="overseasEventDAOImpl"/>
+	</bean>
+	<bean id="overseasEventDAOImpl" class="com.atosorigin.mice.km.dao.impl.OverseasEventDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="overseasEventDetailDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="overseasEventDetailDAOImpl"/>
+	</bean>
+	<bean id="overseasEventDetailDAOImpl" class="com.atosorigin.mice.km.dao.impl.OverseasEventDetailDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="overseasEventVendorDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="overseasEventVendorDAOImpl"/>
+	</bean>
+	<bean id="overseasEventVendorDAOImpl" class="com.atosorigin.mice.km.dao.impl.OverseasEventVendorDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="regionCategoryDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="regionCategoryDAOImpl"/>
+	</bean>
+	<bean id="regionCategoryDAOImpl" class="com.atosorigin.mice.km.dao.impl.RegionCategoryDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="propagandaDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="propagandaDAOImpl"/>
+	</bean>
+	<bean id="propagandaDAOImpl" class="com.atosorigin.mice.km.dao.impl.PropagandaDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="playerDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="playerDAOImpl"/>
+	</bean>
+	<bean id="playerDAOImpl" class="com.atosorigin.mice.km.dao.impl.PlayerDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="regionDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="regionDAOImpl"/>
+	</bean>
+	<bean id="regionDAOImpl" class="com.atosorigin.mice.km.dao.impl.RegionDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="baseDataDAO" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames" value="baseDataDAOImpl"/>
+	</bean>
+	<bean id="baseDataDAOImpl" class="com.atosorigin.mice.km.dao.impl.BaseDataDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+
+</beans>

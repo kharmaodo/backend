@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING/DTD BEAN/EN" "http://www.springframework.org/dtd/spring-beans.dtd"> 
+<beans>
+
+    <!-- Property setting -->
+    <bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:sys-setting.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- DataBase Setting -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${km.jdbc.driverClassName}"/>
+		<property name="url" value="${km.jdbc.url}"/>
+		<property name="username" value="${km.jdbc.username}"/>
+		<property name="password" value="${km.jdbc.password}"/>
+	    <property name="maxIdle" value="${km.jdbc.maxidle}"/>
+	    <property name="maxActive" value="${km.jdbc.maxactive}"/>
+	    <property name="maxWait" value="${km.jdbc.maxwait}"/>
+	    <property name="validationQuery" value="${km.jdbc.validationquery}"/>
+	    <property name="testOnBorrow" value="${km.jdbc.testonborrow}"/>
+		<property name="testWhileIdle" value="${km.jdbc.testwhileidle}"/>
+		<property name="timeBetweenEvictionRunsMillis" value="${km.jdbc.timebetweenevictionrunsmillis}"/>
+		<property name="minEvictableIdleTimeMillis" value="${km.jdbc.minevictableidletimemillis}"/>
+		<property name="numTestsPerEvictionRun" value="${km.jdbc.numtestsperevictionrun}"/>
+		<property name="defaultAutoCommit" value="${km.jdbc.defaultautocommit}"/>
+	</bean>
+	
+	 <!-- JDBC template -->
+	 <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <!-- Transaction Manager-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> 
+        <property name="dataSource"> 
+            <ref bean="dataSource"/> 
+        </property>    
+    </bean> 
+    
+    <!-- resource -->
+    <bean id="messageSource" 
+      class="org.springframework.context.support.ResourceBundleMessageSource"> 
+        <property name="basename"> 
+            <value>messages</value> 
+        </property> 
+    </bean> 
+    
+	
+</beans>

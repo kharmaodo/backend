@@ -1,0 +1,29 @@
+#pager ul {
+  	float:right;
+  	list-style:none;
+  	margin:0px 0px 0px 0px;
+}
+
+#pager ul li {
+  	float:left;
+  	margin:0px 10px 0px 0px;
+  	color: #FF8040;
+}
+
+#pager {
+  	padding: 10px 0px 0px 0px;
+  	width: 1000px;
+  	height: 20px;
+  	text-align: center;
+  	margin: 0px 0px 0px 0px;
+}
+
+#pager ul li a{
+  	color:#003A57;
+  	text-decoration:none;
+}
+
+#pager ul li a:hover{
+  	color:#009FEC;
+  	text-decoration:none;
+}
